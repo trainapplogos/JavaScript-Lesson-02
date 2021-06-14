@@ -42,36 +42,32 @@ console.log('> sum of empty list of employee: ' + sum(emptyEmployee));
 //3rd task
 console.log("\n*****************[task 3]*****************");
 function arithmeticOps(arg1, operation, arg2) {
+	let res = 0;
 	switch(operation) {
 		case '+':
 			try {
-				return arg1 + arg2;
+				res = arg1 + arg2;
 			} catch (err) {
 				console.log('Invalid argument on ' + operation + ' operation');
 			}
 			break;
 		case '-':
 			try {
-				return arg1 - arg2;
+				res = arg1 - arg2;
 			} catch (err) {
 				console.log('Invalid argument on ' + operation + ' operation');
 			}
 			break;
 		case '*':
 			try {
-				return arg1 * arg2;
+				res = arg1 * arg2;
 			} catch (err) {
 				console.log('Invalid argument on ' + operation + ' operation');
 			}
 			break;
 		case '/':
 			try {
-				let res = arg1 / arg2;
-				if (res == Infinity) {
-					console.log("Arithmetic Error: can't divide " + arg1 + " by zero");
-				} else {
-					return res;
-				}
+				res = arg1 / arg2;
 			} catch (err) {
 				console.log('Invalid argument on ' + operation + ' operation');
 			}
@@ -79,8 +75,13 @@ function arithmeticOps(arg1, operation, arg2) {
 		default:
 		    throw Error('Incorrect operation'); 
 	}
+	if (isNaN(res)) { console.log('> Error: Invalid argument on operation ' + operation); }
+	if (res == Infinity) { console.log("Arithmetic Error: can't divide " + arg1 + " by zero"); }
+
+	return res;
 }
 	//addition example
+	console.log('> Addition example:');
 	let arg1 = 5;
 	let arg2 = 7;
 	let operation = '+';
@@ -88,29 +89,34 @@ function arithmeticOps(arg1, operation, arg2) {
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
 	
 	//subtraction example
+	console.log('\n> Subtraction example:');
 	arg1 = 2;
 	arg2 = 9;
 	operation = '-';
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
 	
 	//multiplication example
+	console.log('\n> Multiplication example:');
 	arg1 = 3;
 	arg2 = 5;
 	operation = '*';
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
 	
 	//division example
+	console.log('\nDivision example:');
 	arg1 = 15;
 	arg2 = 4;
 	operation = '/';
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
 
 	//division by 0 example
+	console.log('\nDivision by 0 example:');
 	arg2 = 0;
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
 	
 	//invalid argument example
-	arg1 = 'sd';
+	console.log('\nInvalid argument example:');
+	arg1 = 'sdsdf';
 	arg2 = 4;
 	operation = '*';
 	console.log(arg1 + ' ' + operation + ' ' + arg2 + ' = ' + arithmeticOps(arg1, operation, arg2));
